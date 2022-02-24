@@ -19,8 +19,8 @@
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
             urlencoded.append("redirect_uri", "https://loginapp-lmartinezj.herokuapp.com/");
-            urlencoded.append("client_id", "7f1cd6fe.c78964aa.tid_c2e66e7b.bindid.io");
-            urlencoded.append("client_secret", "2cf64fb9-8ac7-4b15-b091-04cd73b11aeb");
+            urlencoded.append("client_id", process.env.CLIENT_ID);
+            urlencoded.append("client_secret", process.env.CLIENT_SECRET);
 
             var requestOptions = {
                 method: 'POST',
