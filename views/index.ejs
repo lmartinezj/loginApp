@@ -9,31 +9,7 @@
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
     <script>
         function sendAuthCodeToServer(authCode) {
-            // Add code to send the authCode to your application server here
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-            //myHeaders.append("Host", "signin.bindid-sandbox.io");
-            myHeaders.append("Access-Control-Allow-Origin", '*');
-
-            var urlencoded = new URLSearchParams();
-            urlencoded.append("grant_type", "authorization_code");
-            urlencoded.append("code", authCode);
-            urlencoded.append("redirect_uri", "https://loginapp-lmartinezj.herokuapp.com/");
-            urlencoded.append("client_id", process.env.CLIENT_ID);
-            urlencoded.append("client_secret", process.env.CLIENT_SECRET);
-
-            var requestOptions = {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: myHeaders,
-                body: urlencoded,
-                redirect: 'follow'
-            };
-
-            fetch("https://signin.bindid-sandbox.io/token", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            console.log('Auth Code:' + authCode)
         }
 
         function handleError(err) {
