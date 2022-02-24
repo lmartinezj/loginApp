@@ -17,7 +17,10 @@
         }
         window.XmBindId.processRedirectResponse()
          .then(
-             res => { sendAuthCodeToServer(res.code); },
+             res => { 
+                console.log('Auth Code:' + res.code)
+                sendAuthCodeToServer(res.code); 
+            },
              err => { handleError(err); })
       </script>
 
