@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    //res.render('login.ejs')
+    res.render('login.ejs')
 })
 
 app.post('/login', (req, res) => {
