@@ -45,7 +45,7 @@
 
         function handleError(err) {
          // Add code to process the authentication error here
-         console.log('error', err)
+         console.log('error:' + err)
         }
         
         window.XmBindId.processRedirectResponse()
@@ -54,7 +54,7 @@
                 console.log('Auth Code:' + res.code)
                 sendAuthCodeToServer(res.code); 
             },
-             err => { handleError(err); })
+             err => handleError(err))
              
     </script>
 
