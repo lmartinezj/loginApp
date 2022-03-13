@@ -6,44 +6,30 @@
 <body>
     
     <h1>Hi <%= code %> </h1>
-    <% console.log('Code in index: ' + code) %> 
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
     <script async="true">
         
         function sendAuthCodeToServer(authCode) {
-            const clientId = '<%= process.env.CLIENT_ID %>'
-            const clientSecret = '<%= process.env.CLIENT_SECRET %>'
-            const redirect_uri = '<%= process.env.REDIRECT_URI%>'
-                        
-            console.log("client_id: " + clientId);
-            console.log("client_secret: " + clientSecret);
-            console.log("redirect_uri: " + redirect_uri);
-            
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-            myHeaders.append("Host", "signin.bindid-sandbox.io");
-            
-            var urlencoded = new URLSearchParams();
-            urlencoded.append("grant_type", "authorization_code");
-            urlencoded.append("code", authCode);
-            urlencoded.append("redirect_uri", redirect_uri);
-            urlencoded.append("client_id", clientId);
-            urlencoded.append("client_secret", clientSecret);
 
+            /*
             var requestOptions = {
             method: 'POST',
-            headers: myHeaders,
+            headers: myHeaders, //aqui voy
             body: urlencoded,
             redirect: 'follow',
             mode: 'no-cors'
             };
+            
 
-            fetch("https://signin.bindid-sandbox.io/token", requestOptions)
+            fetch("/token", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
+            */
+
+            console.log(fetch('/token'))
         }
 
         function handleError(err) {
