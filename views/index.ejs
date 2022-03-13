@@ -41,8 +41,8 @@
             };
 
             fetch("https://signin.bindid-sandbox.io/token", requestOptions)
-            .then(response => JSON.stringify(res))
-            .then(result => console.log(JSON.parse(data).id_token))
+            .then(response => JSON.stringify(response))
+            .then(result => console.log(JSON.parse(result).id_token))
             .catch(error => handleError(error));
         }
 
