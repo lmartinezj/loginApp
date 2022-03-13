@@ -13,13 +13,15 @@ app.set('view-engine', 'ejs')
 app.use(express.urlencoded( { extended: false } ))
 
 app.get('/', (req, res) => {
+    console.log(req.body.code)
+    console.log(req.body.state)
     res.render('index.ejs', { name: req.body.code})
 })
 
 app.get('/login', (req, res) => {
     res.render('login.ejs')
 })
-
+/*
 app.post('/login', (req, res) => {
     //res.render('login.ejs')
 })
@@ -43,5 +45,5 @@ app.post('/register', async(req, res) => {
     }
     console.log(users)
 })
-
+*/
 app.listen(process.env.PORT || 3000)
