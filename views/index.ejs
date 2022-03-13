@@ -24,7 +24,7 @@
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
             myHeaders.append("Host", "signin.bindid-sandbox.io");
-            myHeaders.append("Access-Control-Allow-Origin", "*");
+            
             var urlencoded = new URLSearchParams();
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
@@ -36,7 +36,8 @@
             method: 'POST',
             headers: myHeaders,
             body: urlencoded,
-            redirect: 'follow'
+            redirect: 'follow',
+            mode: 'no-cors'
             };
 
             fetch("https://signin.bindid-sandbox.io/token", requestOptions)
