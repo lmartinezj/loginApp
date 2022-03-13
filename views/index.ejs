@@ -27,9 +27,9 @@
             var urlencoded = new URLSearchParams();
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
-            urlencoded.append("redirect_uri", redirect_uri );
-            urlencoded.append("client_id", clientId );
-            urlencoded.append("client_secret",  clientSecret );
+            urlencoded.append("redirect_uri", "<%= redirect_uri %>" );
+            urlencoded.append("client_id", "<%= clientId %>" );
+            urlencoded.append("client_secret",  "<%=clientSecret %>" );
 
             var requestOptions = {
             method: 'POST',
