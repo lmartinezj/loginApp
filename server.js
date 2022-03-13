@@ -13,9 +13,9 @@ app.set('view-engine', 'ejs')
 app.use(express.urlencoded( { extended: false } ))
 
 app.get('/', (req, res) => {
-    console.log('code:' + req.query.code)
-    console.log('state' + req.body.state)
-    res.render('index.ejs', { name: req.body.code})
+    console.log('code: ' + req.query.code)
+    console.log('state: ' + req.query.state)
+    res.render('index.ejs', { name: req.query.code })
 })
 
 app.get('/login', (req, res) => {
