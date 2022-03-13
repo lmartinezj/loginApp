@@ -1,8 +1,14 @@
 <head>
     <meta name="xm-bind-id-client_id" content="<%= process.env.CLIENT_ID %>">
+
 </head>
 
 <body>
+    <%  
+        const clientId = process.env.CLIENT_ID
+        const clientSecret = process.env.CLIENT_SECRET
+        const redirect_uri = process.env.REDIRECT_URI
+    %> 
     <h1>Hi <%= code %> </h1>
     <% console.log('Code in index: ' + code) %> 
 
@@ -11,18 +17,18 @@
     <script async="true">
 
         function sendAuthCodeToServer(authCode) {
-            console.log("redirect_uri: " + process.env.REDIRECT_URI);
-            console.log("client_id: " + process.env.CLIENT_ID);
-            console.log("client_secret: " + process.env.CLIENT_SECRET);
+            console.log("redirect_uri: " + client_id);
+            console.log("client_id: " + client_secret);
+            console.log("client_secret: " + redirect_uri);
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
             myHeaders.append("Host", "signin.bindid-sandbox.io");
             var urlencoded = new URLSearchParams();
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
-            urlencoded.append("redirect_uri", process.env.REDIRECT_URI );
-            urlencoded.append("client_id", process.env.CLIENT_ID );
-            urlencoded.append("client_secret",  process.env.CLIENT_SECRET );
+            urlencoded.append("redirect_uri", redirect_uri );
+            urlencoded.append("client_id", client_id );
+            urlencoded.append("client_secret",  client_secret );
 
             var requestOptions = {
             method: 'POST',
