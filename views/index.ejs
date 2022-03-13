@@ -7,14 +7,35 @@
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
-    <!--script async="false">
+    <script async="false">
 
         function sendAuthCodeToServer(authCode) {
-           // console.log('Auth Code:' + authCode)
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+            myHeaders.append("Host", "signin.bindid-sandbox.io");
+            var urlencoded = new URLSearchParams();
+            urlencoded.append("grant_type", "authorization_code");
+            urlencoded.append("code", "<%= authCode %>");
+            urlencoded.append("redirect_uri", "<%= process.env.REDIRECT_URI %>");
+            urlencoded.append("client_id", "<%= process.env.CLIENT_ID %>");
+            urlencoded.append("client_secret", "<%= process.env.CLIENT_SECRET %>");
+
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+            };
+
+            fetch("https://signin.bindid-sandbox.io/token", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => handleError(error));
         }
 
         function handleError(err) {
          // Add code to process the authentication error here
+         console.log('error', err)
         }
         
         window.XmBindId.processRedirectResponse()
@@ -25,6 +46,6 @@
             },
              err => { handleError(err); })
              
-      </script-->
+    </script>
 
 </body>
