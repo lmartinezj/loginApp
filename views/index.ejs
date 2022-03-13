@@ -17,8 +17,8 @@
             const clientSecret = '<%= process.env.CLIENT_SECRET %>'
             const redirect_uri = '<%= process.env.REDIRECT_URI%>'
                         
-            console.log("redirect_uri: " + client_id);
-            console.log("client_id: " + client_secret);
+            console.log("redirect_uri: " + clientId);
+            console.log("client_id: " + clientSecret);
             console.log("client_secret: " + redirect_uri);
             
             var myHeaders = new Headers();
@@ -28,8 +28,8 @@
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
             urlencoded.append("redirect_uri", redirect_uri );
-            urlencoded.append("client_id", client_id );
-            urlencoded.append("client_secret",  client_secret );
+            urlencoded.append("client_id", clientId );
+            urlencoded.append("client_secret",  clientSecret );
 
             var requestOptions = {
             method: 'POST',
@@ -50,12 +50,17 @@
         }
         
         window.XmBindId.processRedirectResponse()
-         .then(
+        .then(
              res => { 
-                console.log('Auth Code:' + res.code)
-                sendAuthCodeToServer(res.code); 
+                res => JSON.stringify(res)
             },
-             err => handleError(err))
+            err => handleError(err))
+        .then(
+            data => {
+                sendAuthCodeToServer(JSON.parse(data).code)
+            },
+            err => handleError(err)
+        )
              
     </script>
 
