@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     console.log('state: ' + req.query.state)
     res.cookie('authCode', req.query.code)
     res.cookie('state', req.query.state)
-    res.render('index.ejs', , {name: 'luis'})
+    res.render('index.ejs', {name: 'luis'})
 })
 
 app.get('/login', (req, res) => {
