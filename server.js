@@ -25,8 +25,8 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/token', (req, res) => {
-    res.send("Auth code: ")    
-    //res.send("Auth code: " + req.cookies['authCode'] + "State: " + req.cookies['state'])    
+    //res.send("Auth code: ")    
+    res.send("Auth code: " + req.cookies['authCode'] + "State: " + req.cookies['state'])    
     /*
     const clientId = '<%= process.env.CLIENT_ID %>'
     const clientSecret = '<%= process.env.CLIENT_SECRET %>'
