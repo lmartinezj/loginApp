@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login.ejs')
+    res.render('login.ejs', {name: 'luis'})
 })
 
 app.post('/token', (req, res) => {

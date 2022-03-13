@@ -5,7 +5,7 @@
 
 <body>
     
-    <h1>Hi <%= code %> </h1>
+    <h1>Hi <%= name %> </h1>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
@@ -29,7 +29,11 @@
             .catch(error => console.log('error', error));
             */
 
-            console.log(fetch('/token'))
+            fetch('/token', { 
+                method: 'POST',
+                mode: 'no-cors'
+            })
+            .then(response => console.log(response))
         }
 
         function handleError(err) {
