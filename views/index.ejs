@@ -17,9 +17,9 @@
             const clientSecret = '<%= process.env.CLIENT_SECRET %>'
             const redirect_uri = '<%= process.env.REDIRECT_URI%>'
                         
-            console.log("redirect_uri: " + clientId);
-            console.log("client_id: " + clientSecret);
-            console.log("client_secret: " + redirect_uri);
+            console.log("client_id: " + clientId);
+            console.log("client_secret: " + clientSecret);
+            console.log("redirect_uri: " + redirect_uri);
             
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -41,8 +41,8 @@
             };
 
             fetch("https://signin.bindid-sandbox.io/token", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => JSON.stringify(res))
+            .then(result => console.log(JSON.parse(data).id_token))
             .catch(error => handleError(error));
         }
 
