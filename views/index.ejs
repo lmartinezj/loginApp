@@ -19,9 +19,9 @@
             var urlencoded = new URLSearchParams();
             urlencoded.append("grant_type", "authorization_code");
             urlencoded.append("code", authCode);
-            urlencoded.append("redirect_uri", "<%= process.env.REDIRECT_URI %>");
-            urlencoded.append("client_id", "<%= process.env.CLIENT_ID %>");
-            urlencoded.append("client_secret", "<%= process.env.CLIENT_SECRET %>");
+            urlencoded.append("redirect_uri", process.env.REDIRECT_URI );
+            urlencoded.append("client_id", process.env.CLIENT_ID );
+            urlencoded.append("client_secret",  process.env.CLIENT_SECRET );
 
             var requestOptions = {
             method: 'POST',
