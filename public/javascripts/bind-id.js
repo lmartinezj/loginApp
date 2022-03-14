@@ -1,5 +1,5 @@
 function sendPostToken() {
-    document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("DOMContentLoaded", function() {
         fetch('/token', { 
             method: 'POST',
             headers: {
