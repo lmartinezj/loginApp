@@ -12,6 +12,24 @@
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
     <script src="/javascripts/bind-id.js" defer></script>
     <script>
+        function sendAuthCodeToServer(authCode) {
+            // Add code to send the authCode to your application server here
+            fetch('/token', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'    
+                },
+                body: JSON.stringify({ code: getCookie('authCode') })
+            })
+            .then(res => {
+                return res.json()
+            })
+            .then(data =>  { 
+                console.log(data)
+                return data
+            })
+            .catch(err => console.log('ERROR: ' + err.message))
+        }
         window.XmBindId.processRedirectResponse()
         .then(res => { 
             sendAuthCodeToServer(res.code); 
