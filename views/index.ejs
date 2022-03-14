@@ -30,6 +30,7 @@
             })
             .catch(err => console.log('ERROR: ' + err.message))
         }
+        window.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
         window.XmBindId.processRedirectResponse()
         .then(res => { 
             sendAuthCodeToServer(res.code); 
