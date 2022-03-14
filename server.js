@@ -12,6 +12,7 @@ const users = []
 
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded( { extended: false } ))
+app.use(express.static('public')) // Define the location of public files js css img
 
 app.get('/', (req, res) => {
     console.log('code: ' + req.query.code)
