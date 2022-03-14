@@ -36,7 +36,7 @@
             console.log('ERROR: ' + err.message)
         }
 
-        window.XmBindId.processRedirectResponse()
+        XmBindId.processRedirectResponse()
         .then(res => { 
             sendAuthCodeToServer(res.code); 
         },
