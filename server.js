@@ -28,7 +28,7 @@ app.get('/login', (req, res) => {
 
 app.post('/token', (req, res) => {
     //res.send("Auth code: ")    
-    console.log("Auth code: " + req.cookies['authCode'] + "State: " + req.cookies['state'])
+    console.log("/token called")
     res.send("Auth code: ")    
     //res.send("Auth code: " + req.cookies['authCode'] + "State: " + req.cookies['state'])    
     /*
