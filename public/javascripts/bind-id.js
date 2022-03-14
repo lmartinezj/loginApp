@@ -1,3 +1,4 @@
+/*
 function sendPostToken() {
     window.addEventListener("DOMContentLoaded", function() {
         fetch('/token', { 
@@ -42,3 +43,4 @@ window.XmBindId.processRedirectResponse()
 err => { 
     handleError(err); 
 })
+*/

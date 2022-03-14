@@ -4,14 +4,14 @@
 
 </head>
 
-<body onload="sendPostToken()">
+<body>
     
     <h1>Hi <%= name %> </h1>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
-    <script src="/javascripts/bind-id.js" defer></script>
-    <script async>
+    <!--script src="/javascripts/bind-id.js" defer></script-->
+    <script>
         function sendAuthCodeToServer(authCode) {
             // Add code to send the authCode to your application server here
             fetch('/token', { 
@@ -19,7 +19,7 @@
                 headers: {
                     'Content-Type': 'application/json'    
                 },
-                body: JSON.stringify({ code: getCookie('authCode') })
+                body: JSON.stringify({ code: authCode })
             })
             .then(res => {
                 return res.json()
@@ -28,9 +28,14 @@
                 console.log(data)
                 return data.json()
             })
-            .catch(err => console.log('ERROR: ' + err.message))
+            .catch(err => handleError(err))
         }
-        window.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
+
+        function handleError(err) {
+            // Add code to process the authentication error here
+            console.log('ERROR: ' + err.message)
+        }
+
         window.XmBindId.processRedirectResponse()
         .then(res => { 
             sendAuthCodeToServer(res.code); 
