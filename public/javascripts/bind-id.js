@@ -10,7 +10,10 @@ function sendPostToken() {
         .then(res => {
             return res.json()
         })
-        .then(data => console.log(data))
+        .then(data =>  { 
+            console.log(data)
+            return data
+        })
         .catch(err => console.log('ERROR: ' + err.message))
     });
 }
