@@ -12,7 +12,12 @@
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
     <script src="/javascripts/bind-id.js" defer></script>
     <script>
-        window.addEventListener("DOMContentLoaded", sendPostToken())
+        window.XmBindId.processRedirectResponse()
+        .then(res => { 
+            sendAuthCodeToServer(res.code); 
+        },
+        err => { handleError(err); 
+        })
     </script>
 
     
