@@ -1,18 +1,17 @@
 function sendPostToken() {
     document.addEventListener("DOMContentLoaded", function() {
-        var requestOptions = {
+        fetch('/token', { 
             method: 'POST',
-            headers: myHeaders, //aqui voy
-            body: {code: getCookie('authCode')},
-            redirect: 'follow',
-            mode: 'no-cors'
-            };
-            
-
-            fetch("/token", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: getCookie('authCode') })
+        })
+        .then(res => {
+            return res.json()
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log('ERROR: ' + err.message))
     });
 }
 
