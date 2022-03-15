@@ -39,9 +39,11 @@ app.post('/token', (req, res) => {
     console.log("client_secret: " + clientSecret);
     console.log("redirect_uri: " + redirect_uri);
 
+    /*
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     myHeaders.append("Host", "signin.bindid-sandbox.io");
+    */
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "authorization_code");
@@ -52,7 +54,10 @@ app.post('/token', (req, res) => {
 
     var requestOptions = {
         method: 'POST',
-        headers: myHeaders,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Host': 'signin.bindid-sandbox.io'
+        },
         body: urlencoded,
         redirect: 'follow',
         mode: 'no-cors'
