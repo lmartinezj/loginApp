@@ -1,6 +1,7 @@
 {
   "name": "loginapp",
   "version": "1.0.0",
+  "type": "module",
   "description": "Login to application using transmit security",
   "main": "index.js",
   "scripts": {
