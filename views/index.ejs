@@ -39,8 +39,8 @@
         }
         async function retryProcessRedirectResponse(nthTry) {
             try {
-                const res = await window.XmBindId.processRedirectResponse()
-                const data = await sendAuthCodeToServer(res.code);
+                const res = await XmBindId.processRedirectResponse()
+                const data = sendAuthCodeToServer(res.code);
                 console.log(data)
                 return data
             } catch (err) {
