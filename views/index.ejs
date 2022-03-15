@@ -6,8 +6,11 @@
 
 <body>
     
-    <h1>Hi <%= name %> </h1>
-    <button type="button" onclick="window.XmBindId.processRedirectResponse()">Try</button>
+    <h1>Auth Code: <%= authCode %> </h1>
+    <form method="post" action="/token">
+        <input type="hidden" name="authCode" value="<%= authCode %>">
+        <button type="submit" name="token">Request Token</button>
+    </form>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js" defer></script>
@@ -57,9 +60,6 @@
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
-        var nthTry = 5
-        retryProcessRedirectResponse(nthTry)
-        //console.log('config' + self.XmBindId.config)
     </script>
 
     

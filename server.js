@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     console.log('state: ' + req.query.state)
     res.cookie('authCode', req.query.code)
     res.cookie('state', req.query.state)
-    res.render('index.ejs', {name: req.query.code})
+    res.render('index.ejs', {authCode: req.query.code})
 })
 
 app.get('/login', (req, res) => {
@@ -28,6 +28,7 @@ app.get('/login', (req, res) => {
 
 app.post('/token', (req, res) => {
     //res.send("Auth code: ")    
+    console.log('authCode in /token request: ' + req.body.authCode)
     console.log("/token called")
     res.json(
         {
