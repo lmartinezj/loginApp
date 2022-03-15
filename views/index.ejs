@@ -46,6 +46,7 @@
             } catch (err) {
                 if (nthTry === 1) { 
                     handleError(err); 
+                    return
                 }
                 console.log('retrying processRedirectResponse()', nthTry, 'time');
                 return retryProcessRedirectResponse(nthTry - 1)
