@@ -49,7 +49,7 @@
                     return
                 }
                 console.log('retrying processRedirectResponse()', nthTry, 'time');
-                XmBindId.iniinitialize()
+                XmBindId.initialize(process.env.CLIENT_ID)
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
