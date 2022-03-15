@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -5,8 +6,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const bcrypt = require('bcrypt')
-import fetch from "node-fetch"
-
 
 const app = express()
 
