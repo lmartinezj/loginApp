@@ -58,7 +58,7 @@ app.post('/token', (req, res) => {
         mode: 'no-cors'
     }
 
-    fetch("/token", requestOptions)
+    fetch("https://signin.bindid-sandbox.io/token", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
