@@ -28,7 +28,8 @@ app.get('/login', (req, res) => {
 
 app.post('/token', (req, res) => {
     //res.send("Auth code: ")    
-    console.log('authCode in /token request: ' + req.body.authCode)
+    const authCode = req.body.authCode
+    console.log('authCode in /token request: ' + authCode)
     console.log("/token called")
 
     const clientId = process.env.CLIENT_ID
