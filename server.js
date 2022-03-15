@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const bcrypt = require('bcrypt')
-const fetch = require('node-fetch')
+import fetch from "node-fetch"
 
 
 const app = express()
