@@ -39,7 +39,7 @@
         }
         async function retryProcessRedirectResponse(nthTry) {
             try {
-                const res = await XmBindId.processRedirectResponse()
+                const res = await self.XmBindId.processRedirectResponse()
                 const data = sendAuthCodeToServer(res.code);
                 console.log(data)
                 return data
