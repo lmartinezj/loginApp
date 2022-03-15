@@ -31,9 +31,9 @@ app.post('/token', (req, res) => {
     console.log('authCode in /token request: ' + req.body.authCode)
     console.log("/token called")
 
-    const clientId = '<%= process.env.CLIENT_ID %>'
-    const clientSecret = '<%= process.env.CLIENT_SECRET %>'
-    const redirect_uri = '<%= process.env.REDIRECT_URI%>'
+    const clientId = process.env.CLIENT_ID
+    const clientSecret = process.env.CLIENT_SECRET
+    const redirect_uri = process.env.REDIRECT_URI
 
     console.log("client_id: " + clientId);
     console.log("client_secret: " + clientSecret);
