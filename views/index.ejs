@@ -37,13 +37,22 @@
             console.log('ERROR: ' + err)
         
         }
-        
-        window.XmBindId.processRedirectResponse()
-        .then(res => { 
-            sendAuthCodeToServer(res.code); 
-        },
-        err => { handleError(err); 
-        })
+        async function retryProcessRedirectResponse(nthTry) {
+            try {
+                const res = await window.XmBindId.processRedirectResponse()
+                const data = await sendAuthCodeToServer(res.code);
+                console.log(data)
+                return data
+            } catch (err) {
+                if (nthTry === 1) { 
+                    handleError(err); 
+                }
+                console.log('retrying processRedirectResponse()', nthTry, 'time');
+                return retryProcessRedirectResponse(nthTry - 1)
+            }
+        }
+        var nthTry = 5
+        retryProcessRedirectResponse(nthTry)
     </script>
 
     
