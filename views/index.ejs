@@ -39,8 +39,12 @@
         }
         async function retryProcessRedirectResponse(nthTry) {
             try {
-                const res = await self.XmBindId.processRedirectResponse()
-                const data = sendAuthCodeToServer(res.code);
+                const isInitialized = await self.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
+                if (isInitialized) {
+                    console.log('Initialized')
+                    const res = await self.XmBindId.processRedirectResponse()
+                    const data = await sendAuthCodeToServer(res.code);
+                }
                 console.log(data)
                 return data
             } catch (err) {
@@ -49,13 +53,13 @@
                     return
                 }
                 console.log('retrying processRedirectResponse()', nthTry, 'time');
-                self.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
+                
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
         var nthTry = 5
-        //retryProcessRedirectResponse(nthTry)
-        console.log('config' + self.XmBindId.config)
+        retryProcessRedirectResponse(nthTry)
+        //console.log('config' + self.XmBindId.config)
     </script>
 
     
