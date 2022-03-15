@@ -46,9 +46,10 @@
             } catch (err) {
                 if (nthTry === 1) { 
                     handleError(err); 
+                    return
                 }
                 console.log('retrying processRedirectResponse()', nthTry, 'time');
-                // XmBindId.initialize('<%= process.env.CLIENT_ID %>')
+                self.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
