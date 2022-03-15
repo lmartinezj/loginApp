@@ -35,8 +35,9 @@
         function handleError(err) {
             // Add code to process the authentication error here
             console.log('ERROR: ' + err)
+        
         }
-        console.log("window.XmBindId.initialized(): " + window.XmBindId.initialized())
+        
         window.XmBindId.processRedirectResponse()
         .then(res => { 
             sendAuthCodeToServer(res.code); 
