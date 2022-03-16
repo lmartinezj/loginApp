@@ -60,7 +60,18 @@
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
-        retryProcessRedirectResponse(5)
+        window.XmBindId.processRedirectResponse()
+        .then(
+             res => { 
+                res => JSON.stringify(res)
+            },
+            err => handleError(err))
+        .then(
+            data => {
+                sendAuthCodeToServer(JSON.parse(data).code)
+            },
+            err => handleError(err)
+        )
     </script>
 
     
