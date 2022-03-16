@@ -60,7 +60,13 @@
                 return retryProcessRedirectResponse(nthTry - 1)
             }
         }
+        var myXmBindId = window.XmBindId
+        while (myXmBindId == undefined) {
+            console.log(JSON.stringify(window.XmBindId))
+        }
         console.log(JSON.stringify(window.XmBindId))
+        
+
     </script>
 
     
