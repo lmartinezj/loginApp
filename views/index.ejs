@@ -61,8 +61,18 @@
             }
         }
         var myXmBindId = window.XmBindId
+        var counter = 0;
         while (myXmBindId == undefined) {
-            console.log(JSON.stringify(window.XmBindId))
+            console.log(myXmBindId)
+            if (counter > 3000) break;
+            counter = counter + 1
+        }
+        console.log(JSON.stringify(window.XmBindId))
+        sleep(5000);
+        while (myXmBindId == undefined) {
+            console.log(myXmBindId)
+            if (counter > 3000) break;
+            counter = counter + 1
         }
         console.log(JSON.stringify(window.XmBindId))
         
