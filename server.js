@@ -72,9 +72,12 @@ app.post('/token', (req, res) => {
 
 })
 
+/*
 app.get('/token', (req, res) => {
-    res.render('index.ejs', {token: req.query.token})
+    console.log('this is GET /token')
+    res.render('token.ejs', {token: req.query.token})
 })
+*/
 
 
 
