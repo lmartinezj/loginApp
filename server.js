@@ -79,7 +79,7 @@ app.post('/token', (req, res) => {
 app.post('/session-feedback', (req, res) => {
     //res.send("Auth code: ")    
     console.log('this is POST /session-feedback')
-    res.text('calling /session-feedback')
+    res.send('calling /session-feedback')
     
     /*
     const token = req.body.token
