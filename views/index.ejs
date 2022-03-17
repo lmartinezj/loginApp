@@ -18,12 +18,17 @@
     <script>
         function sendAuthCodeToServer(authCode) {
             // Add code to send the authCode to your application server here
+
+            console.log('in sendAuthCodeToServer(body): ' + JSON.stringify({ code: authCode }))
             fetch('/token', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'    
                 },
-                body: JSON.stringify({ code: authCode })
+                //body: JSON.stringify({ code: authCode })
+                body: {
+                    code: authCode
+                }
             })
             .then(res => {
                 return res.json()
@@ -40,38 +45,9 @@
             console.log('ERROR: ' + err)
         
         }
-        async function retryProcessRedirectResponse(nthTry) {
-            try {
-                const isInitialized = await self.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
-                if (isInitialized) {
-                    console.log('Initialized')
-                    const res = await self.XmBindId.processRedirectResponse()
-                    const data = await sendAuthCodeToServer(res.code);
-                }
-                console.log(data)
-                return data
-            } catch (err) {
-                if (nthTry === 1) { 
-                    handleError(err); 
-                    return
-                }
-                console.log('retrying processRedirectResponse()', nthTry, 'time');
-                
-                return retryProcessRedirectResponse(nthTry - 1)
-            }
-        }
         window.XmBindId.processRedirectResponse()
-        .then(
-             res => { 
-                res => JSON.stringify(res)
-            },
-            err => handleError(err))
-        .then(
-            data => {
-                sendAuthCodeToServer(JSON.parse(data).code)
-            },
-            err => handleError(err)
-        )
+        .then(res => { sendAuthCodeToServer(res.code); },
+        err => { handleError(err); })    
     </script>
 
     
@@ -105,6 +81,39 @@
          console.log('error:' + err)
         }
         
+        window.XmBindId.processRedirectResponse()
+        .then(
+             res => { 
+                res => JSON.stringify(res)
+            },
+            err => handleError(err))
+        .then(
+            data => {
+                sendAuthCodeToServer(JSON.parse(data).code)
+            },
+            err => handleError(err)
+        )
+
+        async function retryProcessRedirectResponse(nthTry) {
+            try {
+                const isInitialized = await self.XmBindId.initialize('<%= process.env.CLIENT_ID %>')
+                if (isInitialized) {
+                    console.log('Initialized')
+                    const res = await self.XmBindId.processRedirectResponse()
+                    const data = await sendAuthCodeToServer(res.code);
+                }
+                console.log(data)
+                return data
+            } catch (err) {
+                if (nthTry === 1) { 
+                    handleError(err); 
+                    return
+                }
+                console.log('retrying processRedirectResponse()', nthTry, 'time');
+                
+                return retryProcessRedirectResponse(nthTry - 1)
+            }
+        }
         window.XmBindId.processRedirectResponse()
         .then(
              res => { 
