@@ -65,7 +65,7 @@ app.post('/token', (req, res) => {
     }
 
     fetch("https://signin.bindid-sandbox.io/token", requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => res.json(result))
     .catch(error => console.log('error', error));
 
