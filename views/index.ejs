@@ -9,13 +9,13 @@
     <h1>Auth Code: <%= authCode %> </h1>
     <form method="post" action="/token">
         <input type="hidden" name="authCode" value="<%= authCode %>">
-        <button type="submit" name="token">Request Token</button>
+        <button type="submit" name="button">Request Token</button>
     </form>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CTextDecoder%2CTextEncoder%2CObject.entries"></script>
     <script src="https://signin.bindid-sandbox.io/bindid-sdk/transmit-bind-id-sdk.js"></script>
     <!--script src="/javascripts/bind-id.js" defer></script-->
-    <script>
+    <!--script>
         function sendAuthCodeToServer(authCode) {
             // Add code to send the authCode to your application server here
 
@@ -46,7 +46,7 @@
         window.XmBindId.processRedirectResponse()
         .then(res => { sendAuthCodeToServer(res.code); },
         err => { handleError(err); })    
-    </script>
+    </script-->
 
     
     <!--script async="true">
