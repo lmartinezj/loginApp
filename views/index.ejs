@@ -26,9 +26,7 @@
                     'Content-Type': 'application/json'    
                 },
                 //body: JSON.stringify({ code: authCode })
-                body: {
-                    code: authCode
-                }
+                body: JSON.stringify({ code: authCode })
             })
             .then(res => {
                 return res.json()
