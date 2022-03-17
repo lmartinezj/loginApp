@@ -21,6 +21,7 @@
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "java-caller": "^2.4.0",
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {

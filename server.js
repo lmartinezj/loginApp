@@ -126,12 +126,12 @@ app.post('/session-feedback', (req, res) => {
     .catch(error => console.log('error', error))
 
 })
-/*
-app.get('/token', (req, res) => {
-    console.log('this is GET /token')
-    res.render('token.ejs', {token: req.query.token})
+
+app.post('/session-feedback', (req, res) => {
+    console.log('this is POST /session-feedback')
+    res.text('calling /session-feedback')
 })
-*/
+
 
 
 
