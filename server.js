@@ -78,6 +78,10 @@ app.post('/token', (req, res) => {
 
 app.post('/session-feedback', (req, res) => {
     //res.send("Auth code: ")    
+    console.log('this is POST /session-feedback')
+    res.text('calling /session-feedback')
+    
+    /*
     const token = req.body.token
     console.log('ACCESS_TOKEN in //session-feedback request: ' + token)
     console.log("/session-feedback called")
@@ -96,7 +100,7 @@ app.post('/session-feedback', (req, res) => {
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     myHeaders.append("Host", "signin.bindid-sandbox.io");
     */
-
+    /*
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "authorization_code");
     urlencoded.append("code", authCode);
@@ -124,13 +128,11 @@ app.post('/session-feedback', (req, res) => {
         res.render('token.ejs', { token: myToken })
     })
     .catch(error => console.log('error', error))
+    */
 
 })
 
-app.post('/session-feedback', (req, res) => {
-    console.log('this is POST /session-feedback')
-    res.text('calling /session-feedback')
-})
+
 
 
 
