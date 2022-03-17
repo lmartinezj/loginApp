@@ -6,9 +6,10 @@
 
 <body>
     
-    <h1>Auth Code: <%= authCode %> </h1>
+    <h1>Token: </h1>
+    <p><%= token %></p>
     <form method="post" action="/token">
-        <input type="hidden" name="authCode" value="<%= authCode %>">
+        <input type="hidden" name="token" value="<%= token %>">
         <button type="submit" name="button">Request Token</button>
     </form>
 
