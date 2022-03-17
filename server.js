@@ -69,7 +69,8 @@ app.post('/token', (req, res) => {
     //.then(result => res.json(result))
     .then(result => {
         console.log(result)
-        res.render('token.ejs', { token: result })
+        const myToken = JSON.stringify(result)
+        res.render('token.ejs', { token: myToken })
     })
     .catch(error => console.log('error', error))
 
