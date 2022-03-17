@@ -1,11 +1,11 @@
-var spawn = require('child_process').spawn;
-var path = require('path');
+import { spawn } from 'child_process';
+import { parse } from 'path';
  
 // compile the given java source file and execute it.
-exports.java = function (srcfile) {
+export function java (srcfile) {
     // if srcfile = 'main.java'
-    var filename = path.parse(srcfile).name; // main
-    var extension = path.parse(srcfile).ext;  // .java
+    var filename = parse(srcfile).name; // main
+    var extension = parse(srcfile).ext;  // .java
     if (extension === ".java") {
         var args_compile = [];
         args_compile[0] = srcfile;
@@ -18,7 +18,7 @@ exports.java = function (srcfile) {
 }
  
 // compile source file and execute it.
-exports.execute = function (cmd_compile, args_compile, cmd_run, args_run) {
+export function execute (cmd_compile, args_compile, cmd_run, args_run) {
     //var compile = spawn('gcc', ['codec.c', '-o','codec.out']);
     //var compile = spawn('javac', ['CodeJava.java']);
     var compile = spawn(cmd_compile, args_compile);
@@ -42,4 +42,4 @@ exports.execute = function (cmd_compile, args_compile, cmd_run, args_run) {
             })
         }
     });
-};
+}
