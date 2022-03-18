@@ -91,7 +91,7 @@ app.post('/session-feedback', (req, res) => {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Host': 'lmartinez-feedbackapp.herokuapp.com'
         },
-        body: {token: token},
+        body: myJSON,
         redirect: 'follow',
         mode: 'no-cors'
     }
