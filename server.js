@@ -84,6 +84,29 @@ app.post('/session-feedback', (req, res) => {
 
     const token = req.body.token
     const myJSON = JSON.parse(token)
+
+    var requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Host': 'lmartinez-feedbackapp.herokuapp.com'
+        },
+        body: urlencoded,
+        redirect: 'follow',
+        mode: 'no-cors'
+    }
+    
+    fetch("https://lmartinez-feedbackapp.herokuapp.com/feedback", 
+    requestOptions)
+    .then(response => response.json())
+    //.then(result => res.json(result))
+    .then(result => {
+        console.log(result)
+        const myToken = JSON.stringify(result)
+        res.render('token.ejs', { token: myToken })
+    })
+    .catch(error => console.log('error', error))
+    
     if (myJSON.hasOwnProperty('access_token')) {
         const accessToken = myJSON.access_token
         console.log(run_java.java(process.env.CLIENT_SECRET, accessToken))
