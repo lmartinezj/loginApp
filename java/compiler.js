@@ -2,7 +2,7 @@ var spawn = require('child_process').spawn;
 var path = require('path');
  
 // compile the given java source file and execute it.
-exports.java = function (srcfile) {
+exports.java = function (srcfile, clientSecret, bindIdAccessToken) {
     // if srcfile = 'main.java'
     var filename = path.parse(srcfile).name; // main
     var extension = path.parse(srcfile).ext;  // .java
@@ -11,6 +11,8 @@ exports.java = function (srcfile) {
         args_compile[0] = srcfile;
         var args_run = [];
         args_run[0] = filename;
+        args_run[1] = clientSecret;
+        args_run[2] = bindIdAccessToken;
         this.execute('javac', args_compile, 'java', args_run);
     } else {
         console.log(srcfile + " is not a java file.");

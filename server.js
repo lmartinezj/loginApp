@@ -80,7 +80,7 @@ app.post('/token', (req, res) => {
 app.post('/session-feedback', (req, res) => {
     //res.send("Auth code: ")    
     console.log('this is POST /session-feedback')
-    console.log(java)
+    console.log(run.java)
     res.send('calling /session-feedback')
     
     /*
