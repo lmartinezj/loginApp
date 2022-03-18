@@ -6,7 +6,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-class FeedbackAuthValue {
+class Main {
     public static void main(String[] args) {
         String clientSecret = args[0];
         String bindIdAccessToken = args[1];
