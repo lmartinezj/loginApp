@@ -103,7 +103,7 @@ app.post('/session-feedback', (req, res) => {
     .then(result => {
         console.log(result)
         const myToken = JSON.stringify(result)
-        res.send(myToken)
+        result.send(myToken)
     })
     .catch(error => console.log('error', error))
     
