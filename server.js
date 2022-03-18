@@ -99,7 +99,10 @@ app.post('/session-feedback', (req, res) => {
     
     fetch("https://lmartinez-feedbackapp.herokuapp.com/feedback", 
     requestOptions)
-    .then(response => response.json())
+    .then(response => {
+        response.replace('"', "'")
+        response.json()
+    })
     //.then(result => res.json(result))
     .then(result => {
         console.log(result)
