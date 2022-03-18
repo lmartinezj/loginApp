@@ -107,12 +107,6 @@ app.post('/session-feedback', (req, res) => {
     })
     .catch(error => console.log('error', error))
     
-    if (myJSON.hasOwnProperty('access_token')) {
-        const accessToken = myJSON.access_token
-        console.log(accessToken)
-    }
-    res.send('calling /session-feedback')
-    
     /*
     const token = req.body.token
     console.log('ACCESS_TOKEN in //session-feedback request: ' + token)
