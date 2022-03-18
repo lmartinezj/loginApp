@@ -109,7 +109,7 @@ app.post('/session-feedback', (req, res) => {
     
     if (myJSON.hasOwnProperty('access_token')) {
         const accessToken = myJSON.access_token
-        console.log(accessToken))
+        console.log(accessToken)
     }
     res.send('calling /session-feedback')
     
