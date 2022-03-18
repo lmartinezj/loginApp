@@ -9,7 +9,7 @@ exports.java = function (srcfile, clientSecret, bindIdAccessToken) {
     if (extension === ".java") {
         var args_compile = [];
         args_compile[0] = srcfile;
-        args_compile[1] = '-d java';
+        args_compile[1] = "-cp .";
         var args_run = [];
         args_run[0] = filename;
         args_run[1] = clientSecret;
