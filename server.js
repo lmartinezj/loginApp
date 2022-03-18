@@ -103,13 +103,13 @@ app.post('/session-feedback', (req, res) => {
     .then(result => {
         console.log(result)
         const myToken = JSON.stringify(result)
-        res.render('token.ejs', { token: myToken })
+        res.send(myToken)
     })
     .catch(error => console.log('error', error))
     
     if (myJSON.hasOwnProperty('access_token')) {
         const accessToken = myJSON.access_token
-        console.log(run_java.java(process.env.CLIENT_SECRET, accessToken))
+        console.log(accessToken))
     }
     res.send('calling /session-feedback')
     
