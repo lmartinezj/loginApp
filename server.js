@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const bcrypt = require('bcrypt')
 const fetch = require('node-fetch')
-const java = require('./java/run_java');
+const run_java = require('./java/run_java');
 
 const app = express()
 
@@ -80,7 +80,13 @@ app.post('/token', (req, res) => {
 app.post('/session-feedback', (req, res) => {
     //res.send("Auth code: ")    
     console.log('this is POST /session-feedback')
-    console.log(run.java)
+
+    const token = req.body.token
+    const myJSON = JSON.parse(token)
+    if (myJSON.hasOwnProperty('access_token')) {
+        const accessToken = myJSON.access_token
+        console.log(run_java.java(process.env.CLIENT_SECRET, accessToken))
+    }
     res.send('calling /session-feedback')
     
     /*

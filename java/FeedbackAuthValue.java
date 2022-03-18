@@ -8,7 +8,6 @@ import java.util.Base64;
 
 class FeedbackAuthValue {
     public static void main(String[] args) {
-        public static void main(String[] args) {
         String clientSecret = args[0];
         String bindIdAccessToken = args[1];
         try {
@@ -21,7 +20,6 @@ class FeedbackAuthValue {
         } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
             System.out.println("NoSuchAlgorithmException: " + noSuchAlgorithmException); // Display the string.
         } 
-        
     }
      
     public static String calculateAuthorizationHeaderValue(String clientSecret, String bindIdAccessToken) throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException {
