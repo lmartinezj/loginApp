@@ -83,6 +83,7 @@ app.post('/session-feedback', (req, res) => {
     console.log('this is POST /session-feedback')
 
     const token = req.body.token
+    console.log("req.body.token: " + token)
     const myJSON = JSON.parse(token)
 
     var requestOptions = {
